@@ -156,4 +156,5 @@ Organization: { 3A D4 Teknik Informatika }
 
 _Please insert you review here, only after you finished this project, either on completed or due to time-limit!_
 
-> ```{ WRITE YOUR REVIEW HERE }```
+> ```Pengerjaan ATM Case Study ini sangat menantang, akan tetapi mendapatkan kendala yaitu Lombok nya tidak bisa terbaca padahal sudah diinstal dan sudah dienable untuk menjadi compiler. Sudah mencoba berbagai cara dengan mvn install dan import depedency tapi masih belum bisa```
+> ```Yang sudah dilakukan pada pengerjaan kali ini adalah membuat logic fitur pada ATM case study ini kemudian berhasil membuat rules pada aplikasi inti, aplikasi inti ini tinggal memanggil fungsi yang sudah dibuat.```
