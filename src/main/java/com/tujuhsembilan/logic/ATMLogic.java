@@ -98,6 +98,8 @@ public class ATMLogic {
   }
 
 
+
+
   public static void phoneCreditsTopUp() {
     if (!loggedIn) {
       System.out.println("You are not logged in.");
@@ -133,6 +135,17 @@ public class ATMLogic {
         System.out.println("Invalid choice. Top-up canceled.");
         return;
     }
+
+    BigDecimal accountBalance = selectedCustomer.getBalance();
+
+    if (accountBalance.compareTo(topUpAmount) < 0) {
+      System.out.println("Insufficient funds. Your account balance is " + accountBalance);
+      return;
+    }
+
+    selectedCustomer.setBalance(accountBalance.subtract(topUpAmount));
+    System.out.println("Top-up successful!");
+    System.out.println("Remaining account balance: " + selectedCustomer.getBalance());
   }
 
   public static void electricityBillsToken() {
