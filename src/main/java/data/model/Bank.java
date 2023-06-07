@@ -25,7 +25,7 @@ public class Bank {
   private String name;
 
   @Getter(AccessLevel.NONE)
-  private Boolean depositFeature;
+  private boolean depositFeature;
 
   private BigDecimal maxExpensePerWithdrawal;
   private BigDecimal maxExpensePerUserDaily;
@@ -36,7 +36,7 @@ public class Bank {
   private Set<Transaction> transactions = new HashSet<>();
 
   public boolean hasDepositFeature() {
-    return this.depositFeature.booleanValue();
+    return this.depositFeature;
   }
 
   public Optional<Customer> findCustomerByAccount(String account) {

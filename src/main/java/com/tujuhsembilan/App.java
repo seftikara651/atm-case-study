@@ -45,6 +45,7 @@ public class App {
         }
     }
 
+
     /// --- --- --- --- ---
 
     final Bank bank;
@@ -67,10 +68,64 @@ public class App {
         this.atm = lAtm;
     }
 
+    private void showMainMenu() {
+        boolean loggedIn = true;
+        while (loggedIn) {
+            printClear();
+            printDivider();
+            System.out.println("----- Main Menu -----");
+            System.out.println("1. Account Balance Information");
+            System.out.println("2. Money Withdrawal");
+            System.out.println("3. Phone Credits Top-Up");
+            System.out.println("4. Electricity Bills Token");
+            System.out.println("5. Account Mutation (Fund Transfer)");
+            System.out.println("6. Money Deposit");
+            System.out.println("0. Logout");
+            printDivider();
+
+            System.out.print(" > ");
+            int choice = in.nextInt();
+            switch (choice) {
+                case 1:
+                    ATMLogic.accountBalanceInformation();
+                    break;
+                case 2:
+                    ATMLogic.moneyWithdrawal();
+                    break;
+                case 3:
+                    ATMLogic.phoneCreditsTopUp();
+                    break;
+                case 4:
+                    ATMLogic.electricityBillsToken();
+                    break;
+                case 5:
+                    ATMLogic.accountMutation();
+                    break;
+                case 6:
+                    ATMLogic.moneyDeposit();
+                    break;
+                case 0:
+                    loggedIn = false; // Keluar dari loop jika pengguna memilih logout
+                    break;
+                default:
+                    System.out.println("Invalid input");
+                    delay();
+            }
+        }
+    }
+
+
+
     public void start() {
         if (bank != null && atm != null) {
             ATMLogic.login();
             // TODO: Continue Here
+            if (ATMLogic.isLoggedIn()) {
+                showMainMenu();
+            } else {
+                System.out.println("Login failed. Please try again.");
+                delay();
+            }
         } else {
             System.out.println("Cannot find Bank or ATM");
             delay();
