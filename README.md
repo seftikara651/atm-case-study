@@ -12,8 +12,8 @@ Please follow this instruction **before** you work on this project:
 ---
 
 ```plaintext
-Full Name:    { PUT YOUR NAME HERE }
-Organization: { PUT YOUR ORGANIZATION NAME HERE }
+Full Name:    { Muhammad Nabil Haritshah Away }
+Organization: { Politeknik Negeri Bandung }
 ```
 
 ---
@@ -157,3 +157,6 @@ Organization: { PUT YOUR ORGANIZATION NAME HERE }
 _Please insert you review here, only after you finished this project, either on completed or due to time-limit!_
 
 > ```{ WRITE YOUR REVIEW HERE }```
+> Pada project ini saya terkendala pada saat melakukan login karena disaat memasukin laman main menu account tidak terdeteksi, maka dari itu saya menggunakan cara manual dengan memasukan AccountNumber secara manual pada equal(), sehingga saya bisa mendapatkan data bank yang dituju.
+> Lalu untuk fitur saya berhasil membuat 4 fitur yaitu balance information, withdraw, top up phone credits, dan top up token bill. Untuk Balance nya sendiri saya masih memasang settingan balance ketika relog akan di reset menjadi saldo awal.
+> Untuk fitur mutasi dan juga deposit belum tercapai
