@@ -1,5 +1,8 @@
 package com.tujuhsembilan.logic;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 @NoArgsConstructor(access = AccessLevel.NONE)
 public class ATMLogic {
 

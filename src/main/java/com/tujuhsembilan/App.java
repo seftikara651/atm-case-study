@@ -2,9 +2,8 @@ package com.tujuhsembilan;
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.Scanner;
 import java.util.stream.Collectors;
-
-import com.tujuhsembilan.logic.ATMLogic;
 
 import data.constant.BankCompany;
 import data.model.ATM;
@@ -15,6 +14,9 @@ import data.repository.BankRepo;
 import static com.tujuhsembilan.logic.ConsoleUtil.*;
 
 public class App {
+
+    private int accountNumber = 123;
+    private int pin = 123;
 
     public static void main(String[] args) {
         boolean loop = true;
@@ -70,11 +72,88 @@ public class App {
     public void start() {
         if (bank != null && atm != null) {
             ATMLogic.login();
-            // TODO: Continue Here
+
         } else {
             System.out.println("Cannot find Bank or ATM");
             delay();
         }
     }
 
+    public static class ATMLogic {
+        private static boolean loggedIn = true;
+        // ... kode lainnya ...
+
+        public static boolean isLoggedIn(int accountNumber, int pin) {
+            return loggedIn;
+        }
+
+        public static void login() {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Enter your account number: ");
+            int accountNumber = scanner.nextInt();
+            System.out.print("Enter your PIN: ");
+            int pin = scanner.nextInt();
+
+            if (isLoggedIn(accountNumber, pin)) {
+                loggedIn = true;
+                displayMainMenu();
+                System.out.println("Login successful. Access granted.");
+            } else {
+                loggedIn = false;
+                System.out.println("Invalid credentials. Access denied.");
+                delay();
+            }
+        }
+
+        // ... kode lainnya ...
+    }
+
+    public static void displayMainMenu() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Main Menu");
+            System.out.println("1. Account Balance Information");
+            System.out.println("2. Withdrawal");
+            System.out.println("3. Phone Credits Top Up");
+            System.out.println("4. Electricity Bills Token");
+            System.out.println("5. Account Mutation (Fund Transfer)");
+            System.out.println("6. Money Deposit");
+            System.out.println("7. Exit");
+            System.out.print("Please select an option: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Membaca karakter baru setelah angka yang dimasukkan
+
+            switch (choice) {
+                case 1:
+                    // TODO: Implementasikan logika untuk Account Balance Information
+                    break;
+                case 2:
+                    // TODO: Implementasikan logika untuk Withdrawal
+                    break;
+                case 3:
+                    // TODO: Implementasikan logika untuk Phone Credits Top Up
+                    break;
+                case 4:
+                    // TODO: Implementasikan logika untuk Electricity Bills Token
+                    break;
+                case 5:
+                    // TODO: Implementasikan logika untuk Account Mutation (Fund Transfer)
+                    break;
+                case 6:
+                    // TODO: Implementasikan logika untuk Money Deposit
+                    break;
+                case 7:
+                    System.out.println("Thank you for using the ATM. Goodbye!");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+            System.out.println(); // Baris kosong untuk pemisah
+        }
+    }
 }
+
