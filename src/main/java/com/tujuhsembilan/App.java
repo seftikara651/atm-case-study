@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.tujuhsembilan.logic.ATMLogic;
 
 import data.constant.BankCompany;
+import data.constant.Feature;
 import data.model.ATM;
 import data.model.Bank;
 import data.repository.ATMRepo;
@@ -71,10 +72,55 @@ public class App {
         if (bank != null && atm != null) {
             ATMLogic.login();
             // TODO: Continue Here
+            boolean loggedIn = true;
+            while (loggedIn) {
+                printClear();
+                printDivider();
+                System.out.println("Available Features:");
+                int num = 1;
+                for (Feature feature : Feature.values()) {
+                    System.out.println(" " + num + ". " + feature.name());
+                    num++;
+                }
+                printDivider("-");
+                System.out.println(" 0. Logout");
+                printDivider();
+
+                System.out.print(" > ");
+                int selection = in.nextInt() - 1;
+                if (selection >= 0 && selection < Feature.values().length) {
+                    Feature selectedFeature = Feature.values()[selection];
+                    switch (selectedFeature) {
+                        case VIEW_BALANCE:
+                            ATMLogic.accountBalanceInformation();
+                            break;
+                        case WITHDRAW:
+                            ATMLogic.moneyWithdrawal();
+                            break;
+                        case TOP_UP_PHONE_CREDIT:
+                            ATMLogic.phoneCreditsTopUp();
+                            break;
+                        case TOP_UP_ELECTRICITY_BILL:
+                            ATMLogic.electricityBillsToken();
+                            break;
+                        case UNIVERSITY_PAYMENT:
+                            // TODO: Implement university payment feature
+                            break;
+                        case ACCOUNT_MUTATION:
+                            ATMLogic.accountMutation();
+                            break;
+                        case DEPOSIT:
+                            ATMLogic.moneyDeposit();
+                            break;
+                        default:
+                            System.out.println("Invalid input");
+                            delay();
+                    }
+                }
+            }
         } else {
             System.out.println("Cannot find Bank or ATM");
             delay();
         }
     }
-
 }

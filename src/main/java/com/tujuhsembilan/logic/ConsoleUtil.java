@@ -1,5 +1,8 @@
 package com.tujuhsembilan.logic;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +26,13 @@ public class ConsoleUtil {
 
   public static void printDivider() {
     printDivider('=');
+  }
+
+  public static void printDivider(String character) {
+    if (character.length() != 1) {
+      throw new IllegalArgumentException("Invalid character");
+    }
+    printDivider(character.charAt(0));
   }
 
   public static void delay(int seconds) {

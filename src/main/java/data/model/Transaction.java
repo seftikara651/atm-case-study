@@ -14,4 +14,13 @@ public class Transaction {
   private TransactionType type;
 
   private BigDecimal expense;
+
+  public Customer getCustomer() {
+    return customer;
+  }
+
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
+  }
 }
+
