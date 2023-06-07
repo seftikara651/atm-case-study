@@ -89,4 +89,11 @@ public class BankRepo {
 
     public static void updateBalance(String account, BigDecimal newBalance) {
     }
+
+    public static void setBalance(String account, BigDecimal newBalance) {
+    }
+
+    public static BigDecimal getBalance(String account, BigDecimal newBalance) {
+        return null;
+    }
 }

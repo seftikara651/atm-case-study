@@ -238,7 +238,64 @@ public class App {
 
                                 break;
                             case 3:
-                                // TODO: Implementasikan logika untuk Phone Credits Top Up
+                                if (isLoggedIn(accountNumber, pin)) {
+                                    Customer customer = bank.getCustomers().stream()
+                                            .filter(c -> c.getAccount().equals("111111111"))
+                                            .findFirst()
+                                            .orElse(null);
+
+                                    if (customer != null) {
+                                        System.out.println("Top-up Credit");
+                                        System.out.println("Enter the phone number: ");
+                                        String phoneNumber = scanner.next();
+
+                                        System.out.println("Select the top-up amount:");
+                                        System.out.println("1. Rp10.000,00");
+                                        System.out.println("2. Rp20.000,00");
+                                        System.out.println("3. Rp50.000,00");
+                                        System.out.println("4. Rp100.000,00");
+                                        int topUpOption = scanner.nextInt();
+
+                                        BigDecimal topUpAmount;
+                                        switch (topUpOption) {
+                                            case 1:
+                                                topUpAmount = BigDecimal.valueOf(10000);
+                                                break;
+                                            case 2:
+                                                topUpAmount = BigDecimal.valueOf(20000);
+                                                break;
+                                            case 3:
+                                                topUpAmount = BigDecimal.valueOf(50000);
+                                                break;
+                                            case 4:
+                                                topUpAmount = BigDecimal.valueOf(100000);
+                                                break;
+                                            default:
+                                                System.out.println("Invalid top-up option.");
+                                                delay();
+                                                return;
+                                        }
+
+                                        BigDecimal balance = customer.getBalance();
+                                        BigDecimal newBalance = balance.subtract(topUpAmount);
+                                        BankRepo.setBalance(customer.getAccount(), newBalance);
+
+                                        if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
+                                            customer.setBalance(newBalance);
+                                            System.out.println("Top-up successful!");
+                                            System.out.println("Phone number: " + phoneNumber);
+                                            System.out.println("Top-up amount: " + topUpAmount);
+                                            System.out.println("Remaining balance: " + customer.getBalance());
+                                        } else {
+                                            System.out.println("Insufficient balance.");
+                                        }
+                                    } else {
+                                        System.out.println("Customer not found.");
+                                    }
+                                } else {
+                                    System.out.println("Invalid credentials. Access denied.");
+                                }
+                                delay();
                                 break;
                             case 4:
                                 // TODO: Implementasikan logika untuk Electricity Bills Token
