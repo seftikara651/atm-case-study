@@ -1,5 +1,7 @@
 package com.tujuhsembilan;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Scanner;
@@ -8,15 +10,17 @@ import java.util.stream.Collectors;
 import data.constant.BankCompany;
 import data.model.ATM;
 import data.model.Bank;
+import data.model.Customer;
 import data.repository.ATMRepo;
 import data.repository.BankRepo;
 
+import static com.tujuhsembilan.App.ATMLogic.isLoggedIn;
 import static com.tujuhsembilan.logic.ConsoleUtil.*;
 
 public class App {
 
-    private int accountNumber = 123;
-    private int pin = 123;
+    private static int accountNumber = 123;
+    private static int pin = 123;
 
     public static void main(String[] args) {
         boolean loop = true;
@@ -49,7 +53,7 @@ public class App {
 
     /// --- --- --- --- ---
 
-    final Bank bank;
+    static Bank bank = new Bank();
     final ATM atm;
 
     public App(String bankName) {
@@ -131,29 +135,87 @@ public class App {
                     // TODO: Implementasikan logika untuk Account Balance Information
                     break;
                 case 2:
-                    // TODO: Implementasikan logika untuk Withdrawal
-                    break;
-                case 3:
-                    // TODO: Implementasikan logika untuk Phone Credits Top Up
-                    break;
-                case 4:
-                    // TODO: Implementasikan logika untuk Electricity Bills Token
-                    break;
-                case 5:
-                    // TODO: Implementasikan logika untuk Account Mutation (Fund Transfer)
-                    break;
-                case 6:
-                    // TODO: Implementasikan logika untuk Money Deposit
-                    break;
-                case 7:
-                    System.out.println("Thank you for using the ATM. Goodbye!");
-                    return;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
 
-            System.out.println(); // Baris kosong untuk pemisah
+                    System.out.println("1.Fast cash");
+                    System.out.println("2.Normal cash");
+                    System.out.println();
+                    System.out.println("Please slect a mode for withdraw");
+                    int mode = scanner.nextInt();
+                    if (mode == 1) {
+                        String Y = "Y";
+                        String y = "y";
+                        System.out.println("1---500");
+                        System.out.println("2---1000");
+                        System.out.println("3---2000");
+                        System.out.println("4---5000");
+                        System.out.println("5---10000");
+                        System.out.println("6---15000");
+                        System.out.println("7---20000");
+                        System.out.println();
+                        System.out.println("Slect one of the denomination of money:");
+                        int denomination = scanner.nextInt();
+                        switch (denomination) {
+                            case 1:
+                                if (isLoggedIn(accountNumber, pin)) {
+                                    Customer customer = bank.getCustomers().stream()
+                                            .filter(c -> c.getAccount().equals(accountNumber))
+                                            .findFirst()
+                                            .orElse(null);
+
+                                    if (customer != null) {
+                                        BigDecimal withdrawalAmount = BigDecimal.valueOf(500);
+
+                                        BigDecimal balance = customer.getBalance();
+                                        BigDecimal newBalance = balance.subtract(withdrawalAmount);
+
+                                        if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
+                                            customer.setBalance(newBalance);
+                                            System.out.println("Cash successfully withdrawn!");
+
+                                            System.out.println("");
+                                            System.out.println("Do you wish to print receipt (Y/N)");
+                                            scanner.nextLine();
+                                            String s = scanner.nextLine();
+
+                                            if (s.equalsIgnoreCase("Y")) {
+                                                System.out.println("Account: " + customer.getAccount());
+                                                System.out.println("Date: " + LocalDate.now());
+                                                System.out.println("Withdrawn: " + withdrawalAmount);
+                                                System.out.println("Balance: " + customer.getBalance());
+                                            }
+                                        } else {
+                                            System.out.println("Insufficient balance.");
+                                        }
+                                    } else {
+                                        System.out.println("Customer not found.");
+                                    }
+                                } else {
+                                    System.out.println("Invalid credentials. Access denied.");
+                                }
+                                delay();
+                                break;
+                            case 3:
+                                // TODO: Implementasikan logika untuk Phone Credits Top Up
+                                break;
+                            case 4:
+                                // TODO: Implementasikan logika untuk Electricity Bills Token
+                                break;
+                            case 5:
+                                // TODO: Implementasikan logika untuk Account Mutation (Fund Transfer)
+                                break;
+                            case 6:
+                                // TODO: Implementasikan logika untuk Money Deposit
+                                break;
+                            case 7:
+                                System.out.println("Thank you for using the ATM. Goodbye!");
+                                return;
+                            default:
+                                System.out.println("Invalid choice. Please try again.");
+                        }
+
+                        System.out.println(); // Baris kosong untuk pemisah
+                    }
+            }
         }
     }
 }
-
