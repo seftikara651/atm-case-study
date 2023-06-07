@@ -135,64 +135,89 @@ public class App {
                     // TODO: Implementasikan logika untuk Account Balance Information
                     break;
                 case 2:
-
-                    System.out.println("1.Fast cash");
-                    System.out.println("2.Normal cash");
+                    System.out.println("1. Fast cash");
+                    System.out.println("2. Normal cash");
                     System.out.println();
-                    System.out.println("Please slect a mode for withdraw");
+                    System.out.println("Please select a mode for withdrawal");
                     int mode = scanner.nextInt();
+
                     if (mode == 1) {
                         String Y = "Y";
                         String y = "y";
-                        System.out.println("1---500");
-                        System.out.println("2---1000");
-                        System.out.println("3---2000");
-                        System.out.println("4---5000");
-                        System.out.println("5---10000");
-                        System.out.println("6---15000");
-                        System.out.println("7---20000");
+                        System.out.println("1 - 500");
+                        System.out.println("2 - 1000");
+                        System.out.println("3 - 2000");
+                        System.out.println("4 - 5000");
+                        System.out.println("5 - 10000");
+                        System.out.println("6 - 15000");
+                        System.out.println("7 - 20000");
                         System.out.println();
-                        System.out.println("Slect one of the denomination of money:");
+                        System.out.println("Select one of the denominations of money:");
                         int denomination = scanner.nextInt();
+
+                        BigDecimal withdrawalAmount;
+
                         switch (denomination) {
                             case 1:
-                                if (isLoggedIn(accountNumber, pin)) {
-                                    Customer customer = bank.getCustomers().stream()
-                                            .filter(c -> c.getAccount().equals(accountNumber))
-                                            .findFirst()
-                                            .orElse(null);
+                                withdrawalAmount = BigDecimal.valueOf(500);
+                                break;
+                            case 2:
+                                withdrawalAmount = BigDecimal.valueOf(1000);
+                                break;
+                            case 3:
+                                withdrawalAmount = BigDecimal.valueOf(2000);
+                                break;
+                            case 4:
+                                withdrawalAmount = BigDecimal.valueOf(5000);
+                                break;
+                            case 5:
+                                withdrawalAmount = BigDecimal.valueOf(10000);
+                                break;
+                            case 6:
+                                withdrawalAmount = BigDecimal.valueOf(15000);
+                                break;
+                            case 7:
+                                withdrawalAmount = BigDecimal.valueOf(20000);
+                                break;
+                            default:
+                                System.out.println("Invalid denomination selection.");
+                                return;
+                        }
 
-                                    if (customer != null) {
-                                        BigDecimal withdrawalAmount = BigDecimal.valueOf(500);
+                        Customer customer = bank.getCustomers().stream()
+                                .filter(c -> c.getAccount().equals("111111111"))
+                                .findFirst()
+                                .orElse(null);
 
-                                        BigDecimal balance = customer.getBalance();
-                                        BigDecimal newBalance = balance.subtract(withdrawalAmount);
+                        if (customer != null) {
+                            BigDecimal balance = customer.getBalance();
+                            BigDecimal newBalance = balance.subtract(withdrawalAmount);
 
-                                        if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
-                                            customer.setBalance(newBalance);
-                                            System.out.println("Cash successfully withdrawn!");
+                            if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
+                                customer.setBalance(newBalance);
+                                System.out.println("Cash successfully withdrawn!");
 
-                                            System.out.println("");
-                                            System.out.println("Do you wish to print receipt (Y/N)");
-                                            scanner.nextLine();
-                                            String s = scanner.nextLine();
+                                System.out.println("");
+                                System.out.println("Do you wish to print receipt (Y/N)");
+                                scanner.nextLine();
+                                String s = scanner.nextLine();
 
-                                            if (s.equalsIgnoreCase("Y")) {
-                                                System.out.println("Account: " + customer.getAccount());
-                                                System.out.println("Date: " + LocalDate.now());
-                                                System.out.println("Withdrawn: " + withdrawalAmount);
-                                                System.out.println("Balance: " + customer.getBalance());
-                                            }
-                                        } else {
-                                            System.out.println("Insufficient balance.");
-                                        }
-                                    } else {
-                                        System.out.println("Customer not found.");
-                                    }
-                                } else {
-                                    System.out.println("Invalid credentials. Access denied.");
+                                if (s.equalsIgnoreCase("Y")) {
+                                    System.out.println("Account: " + customer.getAccount());
+                                    System.out.println("Date: " + LocalDate.now());
+                                    System.out.println("Withdrawn: " + withdrawalAmount);
+                                    System.out.println("Balance: " + customer.getBalance());
                                 }
-                                delay();
+                            } else {
+                                System.out.println("Insufficient balance.");
+                            }
+                        } else {
+                            System.out.println("Customer not found.");
+                        }
+                    }
+
+                    delay();
+
                                 break;
                             case 3:
                                 // TODO: Implementasikan logika untuk Phone Credits Top Up
@@ -217,5 +242,3 @@ public class App {
                     }
             }
         }
-    }
-}
