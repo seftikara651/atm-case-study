@@ -156,4 +156,16 @@ Organization: { Politeknik Negeri Bandung }
 
 _Please insert you review here, only after you finished this project, either on completed or due to time-limit!_
 
-> ```{ WRITE YOUR REVIEW HERE }```
+> ```{ Review
+Fitur yang saya buat adalah:
+- Login dan check credentials
+- Account Balance
+- Withdraw
+- Deposit
+
+Kendala:
+- Ada beberapa dependecies yang error diantaranya Lombok, sehingga saya merombak code menjadi manual. Juga saya menggunakan stream.
+- Tidak bisa Run program, entah karena apa yang error. Mungkin karena IDE atau pun dependeciesnya.
+- Karena kendala diatas saya hanya bisa mengerjakan code tapi dapat dicoba (jalan atau tidaknya).
+- Dari beberapa fitur yang saya buat ada beberapa yang tidak sesuai dengan ketentuan yang ada.
+ }```

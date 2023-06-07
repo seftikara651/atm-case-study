@@ -1,10 +1,5 @@
-package data.constant;
+package main.java.data.constant;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum CurrencyNominal {
   M10K,
   M20K,

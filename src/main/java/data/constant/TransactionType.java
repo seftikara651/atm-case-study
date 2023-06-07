@@ -1,4 +1,4 @@
-package data.constant;
+package main.java.data.constant;
 
 public enum TransactionType {
   WITHDRAWAL,

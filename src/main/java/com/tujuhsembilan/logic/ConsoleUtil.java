@@ -1,9 +1,8 @@
-package com.tujuhsembilan.logic;
+package main.java.com.tujuhsembilan.logic;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-@NoArgsConstructor(access = AccessLevel.NONE)
 public class ConsoleUtil {
 
   public static final Scanner in = new Scanner(System.in);
@@ -21,7 +20,11 @@ public class ConsoleUtil {
     System.out.println(sb.toString());
   }
 
-  public static void printDivider() {
+  public static Scanner getIn() {
+	return in;
+}
+
+public static void printDivider() {
     printDivider('=');
   }
 

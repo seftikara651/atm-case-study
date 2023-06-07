@@ -1,46 +1,55 @@
-package data.repository;
+package main.java.data.repository;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import data.constant.BankCompany;
-import data.model.ATM;
-import data.model.Bank;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import main.java.data.constant.BankCompany;
+import main.java.data.model.ATM;
+import main.java.data.model.Bank;
 
-@NoArgsConstructor(access = AccessLevel.NONE)
 public class ATMRepo {
 
-  private static final long DEFAULT_ATM_BALANCE = 15_000_000;
+    private static final long DEFAULT_ATM_BALANCE = 15_000_000;
 
-  private static final Set<ATM> store = new HashSet<>();
-  static {
-    store.add(ATM.builder()
-        .bank(BankRepo.findBankByName(BankCompany.BRI.getName()).get())
-        .balance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE))
-        .build());
+    private static final Set<ATM> store = new HashSet<>();
 
-    store.add(ATM.builder()
-        .bank(BankRepo.findBankByName(BankCompany.BNI.getName()).get())
-        .balance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE))
-        .build());
+    static {
+        Optional<Bank> briBank = BankRepo.findBankByName(BankCompany.BRI.getName());
+        briBank.ifPresent(bank -> {
+            ATM briATM = new ATM();
+            briATM.setBank(bank);
+            briATM.setBalance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE));
+            store.add(briATM);
+        });
 
-    store.add(ATM.builder()
-        .bank(BankRepo.findBankByName(BankCompany.MANDIRI.getName()).get())
-        .balance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE))
-        .build());
+        Optional<Bank> bniBank = BankRepo.findBankByName(BankCompany.BNI.getName());
+        bniBank.ifPresent(bank -> {
+            ATM bniATM = new ATM();
+            bniATM.setBank(bank);
+            bniATM.setBalance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE));
+            store.add(bniATM);
+        });
 
-    store.add(ATM.builder()
-        .bank(BankRepo.findBankByName(BankCompany.BCA.getName()).get())
-        .balance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE))
-        .build());
-  }
+        Optional<Bank> mandiriBank = BankRepo.findBankByName(BankCompany.MANDIRI.getName());
+        mandiriBank.ifPresent(bank -> {
+            ATM mandiriATM = new ATM();
+            mandiriATM.setBank(bank);
+            mandiriATM.setBalance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE));
+            store.add(mandiriATM);
+        });
 
-  public static Optional<ATM> findATMByBank(Bank bank) {
-    return store.stream().filter(item -> bank.equals(item.getBank())).findAny();
-  }
+        Optional<Bank> bcaBank = BankRepo.findBankByName(BankCompany.BCA.getName());
+        bcaBank.ifPresent(bank -> {
+            ATM bcaATM = new ATM();
+            bcaATM.setBank(bank);
+            bcaATM.setBalance(BigDecimal.valueOf(DEFAULT_ATM_BALANCE));
+            store.add(bcaATM);
+        });
+    }
 
+    public static Optional<ATM> findATMByBank(Bank bank) {
+        return store.stream().filter(item -> bank.equals(item.getBank())).findAny();
+    }
 }

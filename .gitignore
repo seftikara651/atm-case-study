@@ -1,3 +1,5 @@
 .vscode
 
 target
+/bin/
+/.apt_generated/

@@ -1,15 +1,10 @@
-package data.constant;
+package main.java.data.constant;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
-public class BankCompany {
-  BRI("BRI"),
-  BNI("BNI"),
-  MANDIRI("Mandiri"),
-  BCA("BCA"),
+public enum BankCompany {
+  BRI,
+  BNI,
+  MANDIRI,
+  BCA,
 
   ;
 
@@ -29,4 +24,12 @@ public class BankCompany {
         throw new IllegalArgumentException("Cannot find BankCompany of order " + order);
     }
   }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
 }
