@@ -87,4 +87,6 @@ public class BankRepo {
         return store.stream().filter(item -> name.equals(item.getName())).findAny();
     }
 
+    public static void updateBalance(String account, BigDecimal newBalance) {
+    }
 }

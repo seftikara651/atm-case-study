@@ -132,7 +132,24 @@ public class App {
 
             switch (choice) {
                 case 1:
-                    // TODO: Implementasikan logika untuk Account Balance Information
+                    if (isLoggedIn(accountNumber, pin)) {
+                        Customer customer = bank.getCustomers().stream()
+                                .filter(c -> c.getAccount().equals("111111111"))
+                                .findFirst()
+                                .orElse(null);
+
+                        if (customer != null) {
+                            System.out.println("Account Balance Information");
+                            System.out.println("Account Number: " + customer.getAccount());
+                            System.out.println("Full Name: " + customer.getFullName());
+                            System.out.println("Balance: " + customer.getBalance());
+                        } else {
+                            System.out.println("Customer not found.");
+                        }
+                    } else {
+                        System.out.println("Invalid credentials. Access denied.");
+                    }
+                    delay();
                     break;
                 case 2:
                     System.out.println("1. Fast cash");
@@ -196,6 +213,7 @@ public class App {
                             if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
                                 customer.setBalance(newBalance);
                                 System.out.println("Cash successfully withdrawn!");
+                                BankRepo.updateBalance(customer.getAccount(), newBalance);
 
                                 System.out.println("");
                                 System.out.println("Do you wish to print receipt (Y/N)");
