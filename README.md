@@ -156,4 +156,4 @@ Organization: Politeknik Negeri Bandung
 
 _Please insert you review here, only after you finished this project, either on completed or due to time-limit!_
 
-> ```{ WRITE YOUR REVIEW HERE }```
+> ```Sepertinya saya masih butuh waktu lagi untuk menyelesaikan ini, karena jujur saya membutuhkan waktu agak banyak tadi di awla untuk memahami alur aplikasi ini dan memahami setiap kode yang ada```
