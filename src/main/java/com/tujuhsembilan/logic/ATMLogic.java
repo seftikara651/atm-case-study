@@ -67,16 +67,15 @@ public class ATMLogic {
       return;
     }
 
-    // List of available currency nominals in descending priority based on value
+    Map<BigDecimal, Integer> withdrawalResult = new HashMap<>();
+    BigDecimal remainingAmount = withdrawalAmount;
+
     List<BigDecimal> currencyNominals = Arrays.asList(
             new BigDecimal("100000"),
             new BigDecimal("50000"),
             new BigDecimal("20000"),
             new BigDecimal("10000")
     );
-
-    Map<BigDecimal, Integer> withdrawalResult = new HashMap<>();
-    BigDecimal remainingAmount = withdrawalAmount;
 
     for (BigDecimal nominal : currencyNominals) {
       int count = remainingAmount.divideToIntegralValue(nominal).intValue();
@@ -92,15 +91,12 @@ public class ATMLogic {
     }
 
     System.out.println("Withdrawal details:");
-    for (Map.Entry<BigDecimal, Integer> entry : withdrawalResult.entrySet()) {
-      BigDecimal nominal = entry.getKey();
-      int count = entry.getValue();
-      System.out.println(count + "x of " + nominal);
-    }
+    withdrawalResult.forEach((nominal, count) -> System.out.println(count + "x of " + nominal));
 
     selectedCustomer.setBalance(accountBalance.subtract(withdrawalAmount));
     System.out.println("Remaining account balance: " + selectedCustomer.getBalance());
   }
+
 
   public static void phoneCreditsTopUp() {
     if (!loggedIn) {
@@ -108,9 +104,35 @@ public class ATMLogic {
       return;
     }
 
-    // Implement phone credits top-up logic here
-    System.out.println("Phone credits top-up:");
-    // ...
+    System.out.print("Enter phone number: ");
+    String phoneNumber = in.next();
+
+    System.out.println("Select top-up amount:");
+    System.out.println("1. Rp10.000,00");
+    System.out.println("2. Rp20.000,00");
+    System.out.println("3. Rp50.000,00");
+    System.out.println("4. Rp100.000,00");
+    System.out.print("Enter your choice: ");
+    int choice = in.nextInt();
+
+    BigDecimal topUpAmount;
+    switch (choice) {
+      case 1:
+        topUpAmount = new BigDecimal("10000");
+        break;
+      case 2:
+        topUpAmount = new BigDecimal("20000");
+        break;
+      case 3:
+        topUpAmount = new BigDecimal("50000");
+        break;
+      case 4:
+        topUpAmount = new BigDecimal("100000");
+        break;
+      default:
+        System.out.println("Invalid choice. Top-up canceled.");
+        return;
+    }
   }
 
   public static void electricityBillsToken() {

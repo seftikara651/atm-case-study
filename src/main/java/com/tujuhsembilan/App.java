@@ -37,6 +37,9 @@ public class App {
             int selection = in.nextInt() - 1;
             if (selection >= 0 && selection < BankCompany.values().length) {
                 new App(BankCompany.getByOrder(selection).getName()).start();
+                /*if (selection == 0 ){
+                    System.out.println("Logout Succesfully");
+                }*/
             } else if (selection == -1) {
                 loop = false;
             } else {
