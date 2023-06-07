@@ -56,6 +56,22 @@ public class ATMLogic {
   }
 
   public static void phoneCreditsTopUp() {
+    System.out.println("Isi Pulsa");
+    System.out.print("Masukkan nomor telepon: ");
+    String phoneNumber = scanner.nextLine();
+
+    System.out.print("Masukkan jumlah pulsa yang akan diisi: ");
+    double topUpAmount = scanner.nextDouble();
+
+    if (isValidPhoneNumber(phoneNumber)) {
+      // Proses pengisian pulsa
+      double saldo = accountBalances.get(phoneNumber);
+      double newSaldo = saldo + topUpAmount;
+      accountBalances.put(phoneNumber, newSaldo);
+      System.out.println("Pengisian pulsa berhasil. Saldo terkini: " + newSaldo);
+    } else {
+      System.out.println("Nomor telepon tidak valid.");
+    }
   }
 
   public static void electricityBillsToken() {

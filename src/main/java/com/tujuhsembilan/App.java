@@ -77,7 +77,7 @@ public class App {
                 printMenu();
                 System.out.print(" > ");
                 int selection = in.nextInt();
-                in.nextLine(); // Membersihkan karakter newline setelah input angka
+                in.nextLine();
 
                 switch (selection) {
                     case 1:
