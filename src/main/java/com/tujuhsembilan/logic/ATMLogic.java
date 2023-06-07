@@ -1,4 +1,8 @@
 package com.tujuhsembilan.logic;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+import java.util.Scanner;
 
 @NoArgsConstructor(access = AccessLevel.NONE)
 public class ATMLogic {
@@ -104,6 +108,23 @@ public class ATMLogic {
   }
 
   public static void moneyDeposit() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Masukkan jumlah uang yang akan disetor: ");
+    double jumlahSetoran = scanner.nextDouble();
+
+    if (jumlahSetoran > 0) {
+      boolean berhasil = processMoneyDeposit(jumlahSetoran);
+      if (berhasil) {
+        System.out.println("Setoran berhasil! Jumlah uang yang disetor: $" + jumlahSetoran);
+      } else {
+        System.out.println("Setoran gagal. Silakan coba lagi.");
+      }
+    } else {
+      System.out.println("Jumlah uang yang dimasukkan tidak valid. Setoran gagal.");
+    }
+  }
+
+  private static boolean processMoneyDeposit(double jumlahSetoran) {
   }
 
 }

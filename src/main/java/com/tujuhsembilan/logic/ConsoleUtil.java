@@ -2,7 +2,8 @@ package com.tujuhsembilan.logic;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.NONE)
 public class ConsoleUtil {
 
@@ -37,5 +38,8 @@ public class ConsoleUtil {
   public static void delay() {
     delay(3);
   }
-
 }
+
+  private void printMenu() {
+
+  }
