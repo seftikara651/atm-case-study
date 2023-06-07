@@ -12,8 +12,8 @@ Please follow this instruction **before** you work on this project:
 ---
 
 ```plaintext
-Full Name:    { PUT YOUR NAME HERE }
-Organization: { PUT YOUR ORGANIZATION NAME HERE }
+Full Name:    Zahwa Putri Hamida
+Organization: Politeknik Negeri Bandung
 ```
 
 ---
@@ -156,4 +156,4 @@ Organization: { PUT YOUR ORGANIZATION NAME HERE }
 
 _Please insert you review here, only after you finished this project, either on completed or due to time-limit!_
 
-> ```{ WRITE YOUR REVIEW HERE }```
+> ```Untuk menjalankan program masih belum bisa masuk ke salah satu bank dengan menggunakan account, pin nasabah yang sudah didefinisikan di BankRepo```

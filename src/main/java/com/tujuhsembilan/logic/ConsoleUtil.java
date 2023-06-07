@@ -3,7 +3,6 @@ package com.tujuhsembilan.logic;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-@NoArgsConstructor(access = AccessLevel.NONE)
 public class ConsoleUtil {
 
   public static final Scanner in = new Scanner(System.in);
@@ -13,7 +12,7 @@ public class ConsoleUtil {
     System.out.flush();
   }
 
-  public static void printDivider(Character character) {
+  public static void printDivider(char character) {
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < 35; i++) {
       sb.append(character);
@@ -37,5 +36,4 @@ public class ConsoleUtil {
   public static void delay() {
     delay(3);
   }
-
 }

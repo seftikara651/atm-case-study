@@ -28,7 +28,7 @@ public class App {
                 System.out.println(" " + num + ". " + menu);
                 num++;
             }
-            printDivider("-");
+            printDivider('-');
             System.out.println(" 0. EXIT");
             printDivider();
 

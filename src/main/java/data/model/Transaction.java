@@ -14,4 +14,8 @@ public class Transaction {
   private TransactionType type;
 
   private BigDecimal expense;
+
+  public Customer getCustomer() {
+    return customer;
+  }
 }

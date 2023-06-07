@@ -12,7 +12,5 @@ public enum Feature {
   TOP_UP_ELECTRICITY_BILL,
   UNIVERSITY_PAYMENT,
   ACCOUNT_MUTATION,
-  DEPOSIT,
-
-  ;
+  DEPOSIT;
 }
