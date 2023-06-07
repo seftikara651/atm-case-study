@@ -2,18 +2,22 @@ package data.constant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
-public class BankCompany {
+public enum BankCompany {
   BRI("BRI"),
   BNI("BNI"),
   MANDIRI("Mandiri"),
-  BCA("BCA"),
-
-  ;
+  BCA("BCA");
 
   private String name;
+
+  public String getName() {
+    return name;
+  }
 
   public static BankCompany getByOrder(int order) {
     switch (order) {

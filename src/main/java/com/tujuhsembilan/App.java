@@ -70,11 +70,52 @@ public class App {
     public void start() {
         if (bank != null && atm != null) {
             ATMLogic.login();
-            // TODO: Continue Here
+            // TODO: Lanjutkan di sini
+            boolean loggedIn = true;
+            while (loggedIn) {
+                printClear();
+                printMenu();
+                System.out.print(" > ");
+                int selection = in.nextInt();
+                in.nextLine(); // Membersihkan karakter newline setelah input angka
+
+                switch (selection) {
+                    case 1:
+                        ATMLogic.accountBalanceInformation();
+                        delay();
+                        break;
+                    case 2:
+                        ATMLogic.moneyWithdrawal();
+                        delay();
+                        break;
+                    case 3:
+                        ATMLogic.phoneCreditsTopUp();
+                        delay();
+                        break;
+                    case 4:
+                        ATMLogic.electricityBillsToken();
+                        delay();
+                        break;
+                    case 5:
+                        ATMLogic.accountMutation();
+                        delay();
+                        break;
+                    case 6:
+                        ATMLogic.moneyDeposit();
+                        delay();
+                        break;
+                    case 0:
+                        loggedIn = false;
+                        break;
+                    default:
+                        System.out.println("Invalid input");
+                        delay();
+                        break;
+                }
+            }
         } else {
             System.out.println("Cannot find Bank or ATM");
             delay();
         }
     }
-
 }
