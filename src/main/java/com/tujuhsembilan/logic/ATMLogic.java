@@ -75,6 +75,29 @@ public class ATMLogic {
   }
 
   public static void electricityBillsToken() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Masukkan nomor pelanggan listrik: ");
+    String nomorPelanggan = scanner.nextLine();
+
+    double tagihan = getElectricityBillFromServer(nomorPelanggan);
+
+    if (tagihan > 0) {
+      System.out.println("Jumlah tagihan listrik: $" + tagihan);
+
+      System.out.println("Masukkan jumlah token yang akan dibeli: ");
+      double jumlahToken = scanner.nextDouble();
+
+      if (jumlahToken <= tagihan) {
+        double sisaTagihan = tagihan - jumlahToken;
+        System.out.println("Pembelian token berhasil!");
+
+        updateElectricityBillOnServer(nomorPelanggan, sisaTagihan);
+      } else {
+        System.out.println("Jumlah token melebihi tagihan listrik. Pembelian gagal.");
+      }
+    } else {
+      System.out.println("Nomor pelanggan tidak valid atau tidak memiliki tagihan.");
+    }
   }
 
   public static void accountMutation() {
