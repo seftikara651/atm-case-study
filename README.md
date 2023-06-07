@@ -12,8 +12,8 @@ Please follow this instruction **before** you work on this project:
 ---
 
 ```plaintext
-Full Name:    { PUT YOUR NAME HERE }
-Organization: { PUT YOUR ORGANIZATION NAME HERE }
+Full Name:    Diana Fauziah
+Organization: Politeknik Negeri Bandung
 ```
 
 ---
@@ -156,4 +156,4 @@ Organization: { PUT YOUR ORGANIZATION NAME HERE }
 
 _Please insert you review here, only after you finished this project, either on completed or due to time-limit!_
 
-> ```{ WRITE YOUR REVIEW HERE }```
+> ```Studi kasus yang bagus, namun waktu yang diberikan sepertinya kurang bagi saya untuk menyelesaikan semua fitur. Sehingga fitur yang saya kerjakan belum selesai semua namun secara alur dan logika saya sudah paham, hanya butuh waktu saja untuk menyelesaikannya.```

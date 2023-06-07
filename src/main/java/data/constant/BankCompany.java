@@ -5,7 +5,11 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class BankCompany {
+public enum BankCompany {
+//  public static final String BRI = "BRI";
+//  public static final String BNI = "BNI";
+//  public static final String MANDIRI = "Mandiri";
+//  public static final String BCA = "BCA";
   BRI("BRI"),
   BNI("BNI"),
   MANDIRI("Mandiri"),
@@ -13,7 +17,7 @@ public class BankCompany {
 
   ;
 
-  private String name;
+  private final String name;
 
   public static BankCompany getByOrder(int order) {
     switch (order) {
@@ -29,4 +33,10 @@ public class BankCompany {
         throw new IllegalArgumentException("Cannot find BankCompany of order " + order);
     }
   }
+
+//  public static int[] values() {
+//    return new int[]{11};
+//  }
+
+
 }

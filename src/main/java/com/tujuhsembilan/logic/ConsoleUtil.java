@@ -1,5 +1,8 @@
 package com.tujuhsembilan.logic;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
