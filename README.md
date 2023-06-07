@@ -156,4 +156,4 @@ Organization: Politeknik Negeri Bandung
 
 _Please insert you review here, only after you finished this project, either on completed or due to time-limit!_
 
-> ```{ WRITE YOUR REVIEW HERE }```
+> ```Masih kesulitan membuat program menggunakan bahasa Java, karena biasanya menggunakan bahasa javascript atau C. Dengan demikian, membutuhkan waktu yang lama untuk mengerti kode di aplikasinya dan juga alurnya```
