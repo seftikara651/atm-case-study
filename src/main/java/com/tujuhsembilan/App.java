@@ -299,6 +299,67 @@ public class App {
                                 break;
                             case 4:
                                 // TODO: Implementasikan logika untuk Electricity Bills Token
+                                if (isLoggedIn(accountNumber, pin)) {
+                                    Customer customer = bank.getCustomers().stream()
+                                            .filter(c -> c.getAccount().equals("111111111"))
+                                            .findFirst()
+                                            .orElse(null);
+                                    if (customer != null) {
+
+
+                                System.out.print("Enter bill number: ");
+                                String billNumber = scanner.nextLine();
+
+                                System.out.println("Available token amounts:");
+                                System.out.println("1. Rp50.000,00");
+                                System.out.println("2. Rp100.000,00");
+                                System.out.println("3. Rp200.000,00");
+                                System.out.println("4. Rp500.000,00");
+                                System.out.print("Select token amount: ");
+                                int tokenOption = scanner.nextInt();
+
+                                BigDecimal tokenAmount;
+                                switch (tokenOption) {
+                                    case 1:
+                                        tokenAmount = BigDecimal.valueOf(50000);
+                                        break;
+                                    case 2:
+                                        tokenAmount = BigDecimal.valueOf(100000);
+                                        break;
+                                    case 3:
+                                        tokenAmount = BigDecimal.valueOf(200000);
+                                        break;
+                                    case 4:
+                                        tokenAmount = BigDecimal.valueOf(500000);
+                                        break;
+                                    default:
+                                        System.out.println("Invalid token option.");
+                                        return;
+                                }
+                                        BigDecimal balance = customer.getBalance();
+                                        BigDecimal newBalance = balance.subtract(tokenAmount);
+                                        BankRepo.setBalance(customer.getAccount(), newBalance);
+
+
+                                        if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
+                                            customer.setBalance(newBalance);
+                                            System.out.println("Cash successfully withdrawn!");
+                                            BankRepo.updateBalance(customer.getAccount(), newBalance);
+
+                                            System.out.println("Token purchased successfully!");
+                                            System.out.println("Bill number: " + billNumber);
+                                            System.out.println("Token amount: " + tokenAmount);
+                                            System.out.println("Remaining balance: " + newBalance);
+                                        } else {
+                                            System.out.println("Insufficient balance.");
+                                        }
+                                    } else {
+                                        System.out.println("Customer not found.");
+                                    }
+                                } else {
+                                    System.out.println("Invalid credentials. Access denied.");
+                                }
+                                delay();
                                 break;
                             case 5:
                                 // TODO: Implementasikan logika untuk Account Mutation (Fund Transfer)
