@@ -12,8 +12,8 @@ Please follow this instruction **before** you work on this project:
 ---
 
 ```plaintext
-Full Name:    { PUT YOUR NAME HERE }
-Organization: { PUT YOUR ORGANIZATION NAME HERE }
+Full Name:    { Muhammad Aziz Taufiqurrahman }
+Organization: { 3A D4 Teknik Informatika }
 ```
 
 ---
