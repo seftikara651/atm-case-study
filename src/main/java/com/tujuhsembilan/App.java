@@ -362,7 +362,46 @@ public class App {
                                 delay();
                                 break;
                             case 5:
-                                // TODO: Implementasikan logika untuk Account Mutation (Fund Transfer)
+
+                                System.out.print("Enter target bank name: ");
+                                String targetBankName = scanner.nextLine();
+
+                                System.out.print("Enter target account number: ");
+                                String targetAccountNumber = scanner.nextLine();
+
+                                System.out.print("Enter transfer amount: ");
+                                BigDecimal transferAmount = scanner.nextBigDecimal();
+
+                                if (isLoggedIn(accountNumber, pin)) {
+                                    Customer customer = bank.getCustomers().stream()
+                                            .filter(c -> c.getAccount().equals("111111111"))
+                                            .findFirst()
+                                            .orElse(null);
+
+                                    if (customer != null) {
+                                        BigDecimal balance = customer.getBalance();
+                                        BigDecimal newBalance = balance.subtract(transferAmount);
+                                        BankRepo.setBalance(customer.getAccount(), newBalance);
+
+                                        if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
+                                            customer.setBalance(newBalance);
+                                            BankRepo.updateBalance(customer.getAccount(), newBalance);
+
+                                            System.out.println("Funds transferred successfully!");
+                                            System.out.println("Target Bank: " + targetBankName);
+                                            System.out.println("Target Account: " + targetAccountNumber);
+                                            System.out.println("Transfer Amount: " + transferAmount);
+                                            System.out.println("Remaining Balance: " + newBalance);
+                                        } else {
+                                            System.out.println("Insufficient balance.");
+                                        }
+                                    } else {
+                                        System.out.println("Customer not found.");
+                                    }
+                                } else {
+                                    System.out.println("Invalid credentials. Access denied.");
+                                }
+                                delay();
                                 break;
                             case 6:
                                 // TODO: Implementasikan logika untuk Money Deposit

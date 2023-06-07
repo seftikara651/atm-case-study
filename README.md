@@ -159,4 +159,4 @@ _Please insert you review here, only after you finished this project, either on 
 > ```{ WRITE YOUR REVIEW HERE }```
 > Pada project ini saya terkendala pada saat melakukan login karena disaat memasukin laman main menu account tidak terdeteksi, maka dari itu saya menggunakan cara manual dengan memasukan AccountNumber secara manual pada equal(), sehingga saya bisa mendapatkan data bank yang dituju.
 > Lalu untuk fitur saya berhasil membuat 4 fitur yaitu balance information, withdraw, top up phone credits, dan top up token bill. Untuk Balance nya sendiri saya masih memasang settingan balance ketika relog akan di reset menjadi saldo awal.
-> Untuk fitur mutasi dan juga deposit belum tercapai
+> Untuk fitur mutasi sudah dikerjakan namun masih menampilkan data dummy bank yang dituju dan juga deposit belum tercapai
